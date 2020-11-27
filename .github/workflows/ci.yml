@@ -35,4 +35,4 @@ jobs:
       run: |
          docker login --username=${{secrets.DOCKER_USERNAME}} --password=${{secrets.DOCKER_PASSWORD}}
          docker build . -t fidelis90/my-apps
-         docker push fidelis90/my-apps
+         docker push docker.io/fidelis90/my-apps
