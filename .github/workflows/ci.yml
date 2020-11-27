@@ -32,13 +32,8 @@ jobs:
       run: ./gradlew build
 
     - name: Build and push Docker images
-      uses: docker/build-push-action@v2.2.0
-      with:
-          context: .
-          file: ./Dockerfile
-          platforms: linux/386,linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64,linux/ppc64le,linux/s390x
-          push: true
-          tags: |
-            fidelis90/my-apps:latest
-            fidelis90/my-apps:1.0.0
+      run: |
+         docker login --username=fidelis90 --password=${{secrets.DOCKER_PASSWORD}}
+         docker image build -t fidelis90/my-apps:hellov1.1
+         docker push fidelis90/my-apps:hellov1.1
 
