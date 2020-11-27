@@ -31,4 +31,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    
+    - name: Build and push Docker images
+      run: |
+         docker login --username=${{secrets.DOCKER_USERNAME}} --password=${{secrets.DOCKER_PASSWORD}}
+         docker build . -t fidelis90/my-apps:hellov1.1
+         docker push fidelis90/my-apps:hellov1.1
